@@ -1,0 +1,263 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D26E182E1577338E008A5910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26E182D1577338E008A5910 /* UIKit.framework */; };
+		D26E18301577338E008A5910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26E182F1577338E008A5910 /* Foundation.framework */; };
+		D26E18321577338E008A5910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D26E18311577338E008A5910 /* CoreGraphics.framework */; };
+		D26E18381577338E008A5910 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D26E18361577338E008A5910 /* InfoPlist.strings */; };
+		D26E183A1577338E008A5910 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D26E18391577338E008A5910 /* main.m */; };
+		D26E183E1577338E008A5910 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D26E183D1577338E008A5910 /* AppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D26E18291577338E008A5910 /* PushNotification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushNotification.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D26E182D1577338E008A5910 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D26E182F1577338E008A5910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D26E18311577338E008A5910 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D26E18351577338E008A5910 /* PushNotification-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushNotification-Info.plist"; sourceTree = "<group>"; };
+		D26E18371577338E008A5910 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D26E18391577338E008A5910 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D26E183B1577338E008A5910 /* PushNotification-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PushNotification-Prefix.pch"; sourceTree = "<group>"; };
+		D26E183C1577338E008A5910 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D26E183D1577338E008A5910 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D26E18261577338E008A5910 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26E182E1577338E008A5910 /* UIKit.framework in Frameworks */,
+				D26E18301577338E008A5910 /* Foundation.framework in Frameworks */,
+				D26E18321577338E008A5910 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D26E181E1577338E008A5910 = {
+			isa = PBXGroup;
+			children = (
+				D26E18331577338E008A5910 /* PushNotification */,
+				D26E182C1577338E008A5910 /* Frameworks */,
+				D26E182A1577338E008A5910 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D26E182A1577338E008A5910 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D26E18291577338E008A5910 /* PushNotification.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D26E182C1577338E008A5910 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D26E182D1577338E008A5910 /* UIKit.framework */,
+				D26E182F1577338E008A5910 /* Foundation.framework */,
+				D26E18311577338E008A5910 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D26E18331577338E008A5910 /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				D26E183C1577338E008A5910 /* AppDelegate.h */,
+				D26E183D1577338E008A5910 /* AppDelegate.m */,
+				D26E18341577338E008A5910 /* Supporting Files */,
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
+		D26E18341577338E008A5910 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D26E18351577338E008A5910 /* PushNotification-Info.plist */,
+				D26E18361577338E008A5910 /* InfoPlist.strings */,
+				D26E18391577338E008A5910 /* main.m */,
+				D26E183B1577338E008A5910 /* PushNotification-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D26E18281577338E008A5910 /* PushNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D26E18411577338E008A5910 /* Build configuration list for PBXNativeTarget "PushNotification" */;
+			buildPhases = (
+				D26E18251577338E008A5910 /* Sources */,
+				D26E18261577338E008A5910 /* Frameworks */,
+				D26E18271577338E008A5910 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PushNotification;
+			productName = PushNotification;
+			productReference = D26E18291577338E008A5910 /* PushNotification.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D26E18201577338E008A5910 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = D26E18231577338E008A5910 /* Build configuration list for PBXProject "PushNotification" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D26E181E1577338E008A5910;
+			productRefGroup = D26E182A1577338E008A5910 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D26E18281577338E008A5910 /* PushNotification */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D26E18271577338E008A5910 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26E18381577338E008A5910 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D26E18251577338E008A5910 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D26E183A1577338E008A5910 /* main.m in Sources */,
+				D26E183E1577338E008A5910 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D26E18361577338E008A5910 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D26E18371577338E008A5910 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D26E183F1577338E008A5910 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D26E18401577338E008A5910 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D26E18421577338E008A5910 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PushNotification/PushNotification-Prefix.pch";
+				INFOPLIST_FILE = "PushNotification/PushNotification-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D26E18431577338E008A5910 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PushNotification/PushNotification-Prefix.pch";
+				INFOPLIST_FILE = "PushNotification/PushNotification-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D26E18231577338E008A5910 /* Build configuration list for PBXProject "PushNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D26E183F1577338E008A5910 /* Debug */,
+				D26E18401577338E008A5910 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D26E18411577338E008A5910 /* Build configuration list for PBXNativeTarget "PushNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D26E18421577338E008A5910 /* Debug */,
+				D26E18431577338E008A5910 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D26E18201577338E008A5910 /* Project object */;
+}
