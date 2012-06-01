@@ -1,7 +1,7 @@
 PushNotification
 ================
 
-PushNotification Example
+毎回毎回忘れるので今回はメモ！   
 
 登場人物
 -----
