@@ -80,6 +80,7 @@ code signに設定しておくことも忘れずに。
 
 ### APNsから認証されるとデバイストークンを受け取ることができる。
 認証後はUIApplicationのapplication:didRegisterForRemoteNotificationsWithDeviceToken:メソッドが呼ばれるのでそこで受け取る。   
+
     - (void)application:(UIApplication*)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)devToken{
         //NSLog(@"deviceToken: %@", devToken);
         NSString *deviceToken = [[[[devToken description]
@@ -106,9 +107,7 @@ code signに設定しておくことも忘れずに。
         [request setHTTPBody:data];
         [NSURLConnection connectionWithRequest:request delegate:self];
     }
-サーバ側では、このデバイストークンを控えておきます。実用的な所でいうと、
-このデバイストークンと何かしらのユーザを識別するIDをサーバへ送ることになると思います。
-ここまでで、デバイスの登録が完了です。
+サーバ側では、このデバイストークンをDBなりどこかに保存しておく。
 
 
 ### Provider側の実装。  
