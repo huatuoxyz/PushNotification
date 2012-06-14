@@ -93,7 +93,8 @@
 // Providerにデバイストークンを送信
 - (void)sendProviderDeviceToken:(NSString *)token {
     NSMutableData *data = [NSMutableData data];
-    [data appendData:[[@"device=" stringByAppendingFormat:@"%@",token] dataUsingEncoding:NSUTF8StringEncoding]];    
+    NSString *params = [NSString stringWithFormat:@"user_id=%@&token=%@",@"7329732",token];
+    [data appendData:[params dataUsingEncoding:NSUTF8StringEncoding]];    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
                                     [NSURL URLWithString:@"http://sinatra.heroku.com/push/device/"]];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];		

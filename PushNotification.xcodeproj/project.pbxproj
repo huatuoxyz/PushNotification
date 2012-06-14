@@ -218,10 +218,12 @@
 		D26E18421577338E008A5910 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Dongri Jin (JNRYL639S2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PushNotification/PushNotification-Prefix.pch";
 				INFOPLIST_FILE = "PushNotification/PushNotification-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0058E568-3613-4154-A801-CC8276390A50";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -256,6 +258,7 @@
 				D26E18431577338E008A5910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
