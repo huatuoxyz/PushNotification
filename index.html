@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Pushnotification by dongriab</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Pushnotification</h1>
+        <p class="header">PushNotification Example</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/dongriab/PushNotification/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/dongriab/PushNotification/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/dongriab/PushNotification">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/dongriab">dongriab</a></p>
+
+
+      </header>
+      <section>
+        <h1>PushNotification</h1>
+
+<p>毎回毎回忘れるので今回はメモ！   </p>
+
+<h2>登場人物</h2>
+
+<ol>
+<li><p>iPhone, iPad, iPod<br>
+iPhone, iPadは手元にある端末。</p></li>
+<li><p>Apple Push Notification Service (APNs)<br>
+APNsはアップが提供するサービス。</p></li>
+<li><p>Provider<br>
+ProviderはPushしたい情報を送信するやつ（サーバー側ですかね）</p></li>
+</ol><h2>手順</h2>
+
+<h3>デバイス登録</h3>
+
+<p>APNsにPush通知する端末を登録。APNsから一意のデバイストークンが発行されるので、それをProviderが持つことになる。</p>
+
+<h3>アプリインストール</h3>
+
+<p>アプリ起動時に端末からAPNsへデバイスの認証を通知。
+APNsから認証されると、デバイストークンを受け取る。
+端末からデバイストークンをProviderに送る。</p>
+
+<h3>Push通知</h3>
+
+<p>ProviderがPushしたい情報をAPNsに送る。APNsが認証されると、端末宛にPush通知が送られる。</p>
+
+<h3>鍵を作る</h3>
+
+<p>デバイス登録手順でアプリインストール、
+iPhoneからAPNsへデバイス認証通知をするためには、鍵が必要</p>
+
+<h3>iOS Provisioning Portal</h3>
+
+<p><a href="https://developer.apple.com/ios/manage/overview/index.action">https://developer.apple.com/ios/manage/overview/index.action</a></p>
+
+<h3>左メニューApp IDsから「New App ID」ボタンでアプリ生成</h3>
+
+<p>Description: Push Notification Sample<br>
+  Bundle Seed ID: Use Team ID<br>
+  Bundle Identifier: com.dongriab.ios.dev.PushNotification (ここは開発用の*ではなく一意になるものにする必要がある)   </p>
+
+<p>Apps一覧で作成したAppの「Configure」リンクをクリック<br>
+Enableにチェックを付ける。<br>
+Development Push SSL Certificate<br>
+Production Push SSL Certificate<br>
+上の二つあるが、まずは、DevelopmentのConfigureボタンを押す<br>
+Generate a Certificate Signing Request 画面が出る。<br>
+Continue押して、次の画面へ<br>
+通常アプリ登録時生成した CertificateSigningRequest.certSigningRequest をアップロードする<br>
+Generate で成功することを確認。失敗したら？わかりません<br>
+Continue押して、次の画面でDone<br>
+戻って、Development Push SSL Certificateの方のstatusがEnabledになってることを確認。<br>
+aps_development.cer をダウンロードしてキーチェーンに保存<br>
+キーチェーンに「Apple Development IOS Push Services: ***」が入ってることを確認   </p>
+
+<p>証明書と秘密鍵が階層になっているのでこの２つを選択<br>
+名前は適当に<br>
+apns_certificate.p12   </p>
+
+<p>以下のコマンドでpemファイルを生成</p>
+
+<pre><code>$ openssl pkcs12 -in apns_certificate.p12 -out apns_certificate.pem -nodes -clcerts  
+</code></pre>
+
+<p>apns_certificate.pemができたら、ここで作成したApp IDを指定したProvisioningファイルを作成して、Xcodeにインストール。<br>
+code signに設定しておくことも忘れずに。<br>
+ここでの code sign は 「iOS Team Provisioning Profile: <em>」は駄目でProvisioningのDevelopmentで 
+上の指定した、Bundle Identifier(com.dongriab.ios.dev.</em>**)でもう一つ生成して設定</p>
+
+<h3>AppDelegate.m</h3>
+
+<h3>デバイストークンを受け取る</h3>
+
+<pre><code>- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    ...
+    // デバイス認証通知
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+    (UIRemoteNotificationTypeBadge| UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+}
+</code></pre>
+
+<h3>APNsから認証されるとデバイストークンを受け取ることができる。</h3>
+
+<p>認証後はUIApplicationのapplication:didRegisterForRemoteNotificationsWithDeviceToken:メソッドが呼ばれるのでそこで受け取る。   </p>
+
+<pre><code>- (void)application:(UIApplication*)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)devToken{
+    //NSLog(@"deviceToken: %@", devToken);
+    NSString *deviceToken = [[[[devToken description]
+                               stringByReplacingOccurrencesOfString:@"&lt;"withString:@""]
+                              stringByReplacingOccurrencesOfString:@"&gt;" withString:@""]
+                             stringByReplacingOccurrencesOfString: @" " withString: @""];
+    [self sendProviderDeviceToken:deviceToken];
+}
+</code></pre>
+
+<h3>認証エラー</h3>
+
+<pre><code>- (void)application:(UIApplication*)app didFailToRegisterForRemoteNotificationsWithError:(NSError*)err{
+    NSString *text = [NSString stringWithFormat:@"didFailToRegister Error:%@",err];
+    debug.text = text;
+}
+</code></pre>
+
+<h3>Providerにデバイストークンを送信</h3>
+
+<pre><code>- (void)sendProviderDeviceToken:(NSString *)token {
+    NSMutableData *data = [NSMutableData data];
+    [data appendData:[[@"device=" stringByAppendingFormat:@"%@",token] dataUsingEncoding:NSUTF8StringEncoding]];    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                                    [NSURL URLWithString:@"http://sinatra.heroku.com/push/device/"]];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];     
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:data];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+</code></pre>
+
+<p>サーバ側では、このデバイストークンをDBなりどこかに保存しておく。</p>
+
+<h3>Provider側の実装。</h3>
+
+<p>今回はRuby、Sinatraで実装することにする。<br>
+Ruby, Sinatraについてはググって<br>
+APNS gem 追加<br>
+gem "jtv-apns" # ios push notification   </p>
+
+<h3>push.rb</h3>
+
+<pre><code>###################
+# Hosts Config
+###################
+
+#APNS.host = 'gateway.push.apple.com' # Production
+APNS.host = 'gateway.sandbox.push.apple.com' #Development
+
+APNS.feedback_host = 'feedback.push.apple.com'
+
+####################
+# Certificate Setup
+####################
+APNS.pem  = 'cert/apns_certificate.pem'
+APNS.pass = '******'
+####################
+# Connection Mgmt
+####################
+
+get "/push/" do
+  device_token = 'bd4bc8c5 c2033f56 e0d08478 992cd783 f0bfb1ff f4787c32 b22594a6 3bce0464'
+
+  n1 = [device_token, :aps =&gt; { :alert =&gt; 'Hello...', :badge =&gt; 1, :sound =&gt; 'default' }]
+  n2 = [device_token, :aps =&gt; { :alert =&gt; '... iPhone!', :badge =&gt; 1, :sound =&gt; 'default' }]
+  APNS.send_notifications([n1, n2])
+  erb :index
+end
+</code></pre>
+
+<p>Enterprise in-House 配布ではでは Development の config ではなく、Production の config を設定する。</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		
+  </body>
+</html>
